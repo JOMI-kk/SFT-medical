@@ -93,19 +93,13 @@ pip install torch --index-url https://download.pytorch.org/whl/cu118
 ```
 ├── train.py                 # 训练脚本
 ├── evaluate_model.py        # 评估脚本
-├── test_interactive.py      # 交互测试脚本
+├── chat.py      # 交互测试脚本
 ├── lora_config.py           # LoRA 配置
 ├── qwen_train.json          # 训练集
 ├── qwen_val.json            # 验证集
 ├── qwen_test.json           # 测试集
 └── qwen3_medical_lora/      # 训练好的 LoRA 权重
 ```
-
-## 待优化方向
-
-- 增加高质量训练数据量
-- 增加训练轮数（2-3 轮）
-- 构造多轮对话数据提升记忆能力
 
 ## 技术栈
 
