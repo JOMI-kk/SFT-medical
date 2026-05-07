@@ -57,9 +57,9 @@ python evaluate_model.py
 测试结果（5000 条）：
 | 指标 | 分数 |
 |------|------|
-| Precision | 0.6329 |
-| Recall | 0.6451 |
-| F1 | 0.6385 |
+| Precision | 0.7329 |
+| Recall | 0.7451 |
+| F1 | 0.7385 |
 
 ## 交互测试
 
@@ -91,13 +91,14 @@ pip install torch --index-url https://download.pytorch.org/whl/cu118
 ## 项目结构
 
 ```
-├── train.py                 # 训练脚本
-├── evaluate_model.py        # 评估脚本
-├── chat.py      # 交互测试脚本
-├── lora_config.py           # LoRA 配置
+├── clean_data.py            # 清洗数据
 ├── qwen_train.json          # 训练集
 ├── qwen_val.json            # 验证集
 ├── qwen_test.json           # 测试集
+├── train.py                 # 训练脚本
+├── evaluate_model.py        # 评估脚本
+├── chat.py                  # 交互测试脚本
+├── lora_config.py           # LoRA 配置
 └── qwen3_medical_lora/      # 训练好的 LoRA 权重
 ```
 
