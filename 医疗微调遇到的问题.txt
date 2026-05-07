@@ -4,7 +4,7 @@
 
 原因：bitsandbytes 4bit量化需要 accelerate>=1.1.0
 
-您的旧版本：0.27.2
+旧版本：0.27.2
 
 解决方法：升级到 1.1.0+
 
@@ -31,7 +31,7 @@ trainer = Trainer(
 
 
 3.
-重复数据	79万条数据有大量重复	用instruction+input+output组合去重，保留20万条
+重复数据	79万条数据有大量重复	用instruction+input+output组合去重，保留5万条
 数据质量差	输出过短/过长、input="无"	过滤output<50字、>2000字、input为空的数据
 
 
