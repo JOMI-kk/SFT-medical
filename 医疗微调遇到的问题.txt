@@ -1,0 +1,65 @@
+1.
+ accelerate 版本太低（主要问题）
+错误信息：requires accelerate: pip install 'accelerate>=1.1.0'
+
+原因：bitsandbytes 4bit量化需要 accelerate>=1.1.0
+
+您的旧版本：0.27.2
+
+解决方法：升级到 1.1.0+
+
+
+
+2.
+trainer = Trainer(
+    model=model,
+    train_dataset=train_dataset,
+    args=training_args,
+    eval_dataset=val_dataset,
+    data_collator=data_collator,
+    tokenizer=tokenizer,  #  错误！Trainer 没有这个参数
+)
+
+trainer = Trainer(
+    model=model,
+    train_dataset=train_dataset,
+    args=training_args,
+    eval_dataset=val_dataset,
+    data_collator=data_collator,
+    processing_class=tokenizer,  #  新版本参数名
+)
+
+
+3.
+重复数据	79万条数据有大量重复	用instruction+input+output组合去重，保留20万条
+数据质量差	输出过短/过长、input="无"	过滤output<50字、>2000字、input为空的数据
+
+
+4.
+torch_dtype 已弃用警告
+问题：torch_dtype=torch.float16 提示已弃用
+解决：改成 dtype=torch.float1
+
+
+5.
+Tokenizer 的 PAD/BOS/EOS token 警告
+问题：设置 pad_token = eos_token 后提示配置不一致
+解决：手动同步模型配置 model.config.pad_token_id = tokenizer.pad_token_id
+
+
+6.
+batch=4,gradient_accumulation_steps = 4会爆炸
+
+
+7.
+保存步数=评估步数的整数倍（这个是必须的）
+
+
+8.
+tokenizer.pad_token = tokenizer.eos_token
+tokenizer.padding_side = 'left'  # 批量推理必须设置为 left！
+
+
+9.
+Hugging Face 连接超时，国内无法直接访问 Hugging Face 官网
+设置环境变量 HF_ENDPOINT=https://hf-mirror.com 使用国内镜像
